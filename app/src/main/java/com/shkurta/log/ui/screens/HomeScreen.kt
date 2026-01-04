@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.shkurta.log.ui.components.LogItem
 import com.shkurta.log.ui.viewmodels.HomeViewModel
 
 @Composable
@@ -57,10 +58,8 @@ fun HomeScreen(
             contentPadding = innerPadding
         ) {
             items(logs) { log ->
-                Text(
-                    text = log.content,
-                    fontSize = 20.sp,
-                    color = MaterialTheme.colorScheme.onBackground
+                LogItem(
+                    log = log
                 )
             }
         }
