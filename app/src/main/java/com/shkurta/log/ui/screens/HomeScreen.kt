@@ -59,7 +59,8 @@ fun HomeScreen(
         ) {
             items(logs) { log ->
                 LogItem(
-                    log = log
+                    log = log,
+                    onDeleteClick = { viewModel.deleteLog(log) }
                 )
             }
         }
