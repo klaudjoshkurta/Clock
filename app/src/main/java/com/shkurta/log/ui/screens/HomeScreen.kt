@@ -28,6 +28,7 @@ fun HomeScreen(
     onNewLogClick: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
+
     val logs by viewModel.logs.collectAsState()
 
     Scaffold(
