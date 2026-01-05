@@ -9,6 +9,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -63,6 +64,9 @@ fun HomeScreen(
                     log = log,
                     onDeleteClick = { viewModel.deleteLog(log) }
                 )
+                if (log != logs.last()) {
+                    HorizontalDivider()
+                }
             }
         }
     }

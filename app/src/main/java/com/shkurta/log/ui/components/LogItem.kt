@@ -23,6 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.shkurta.log.data.local.db.entity.LogEntity
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun LogItem(
@@ -31,6 +34,7 @@ fun LogItem(
     onDeleteClick: () -> Unit = {}
 ) {
     var expanded by remember { mutableStateOf(false) }
+    val formatter = remember { SimpleDateFormat("HH:mm", Locale.getDefault()) }
 
     Box(
         modifier = modifier
@@ -43,6 +47,9 @@ fun LogItem(
             Column(
                 modifier = Modifier.weight(1f)
             ) {
+                Text(
+                    text = formatter.format(Date(log.createdAt)),
+                )
                 Text(
                     text = log.content,
                 )
