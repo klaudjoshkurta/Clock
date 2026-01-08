@@ -2,6 +2,7 @@ package com.shkurta.clock.di
 
 import android.content.Context
 import androidx.room.Room
+import com.shkurta.clock.alarm.AlarmScheduler
 import com.shkurta.clock.database.AlarmDatabase
 import dagger.Module
 import dagger.Provides
@@ -26,4 +27,8 @@ object AppModule {
 
     @Provides
     fun provideAlarmDao(database: AlarmDatabase) = database.alarmDao()
+
+    @Provides
+    @Singleton
+    fun provideAlarmScheduler(@ApplicationContext context: Context) = AlarmScheduler(context)
 }

@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.shkurta.clock.AlarmList
+import com.shkurta.clock.data.Alarm
 import com.shkurta.clock.ui.addalarm.AddAlarmScreen
 import com.shkurta.clock.viewmodel.AlarmViewModel
 
@@ -26,7 +27,7 @@ fun NavGraph() {
         composable("addAlarm") {
             AddAlarmScreen(
                 onSave = { time, label ->
-                    viewModel.addAlarm(time, label)
+                    viewModel.addAlarm(Alarm(time = time, label = label))
                     navController.popBackStack()
                 },
                 onCancel = {
