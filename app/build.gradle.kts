@@ -52,11 +52,13 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material3.adaptive)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.compose.ui.text.google.fonts) // Google Fonts for Compose
     implementation(libs.androidx.navigation.compose) // Compose Navigation
     implementation(libs.androidx.room.runtime) // Room runtime
-    implementation(libs.androidx.room.ktx) // Room KTX
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.material3) // Room KTX
     ksp(libs.androidx.room.compiler) // Room compiler
     implementation(libs.hilt.android) // Hilt
     ksp(libs.hilt.compiler) // Hilt compiler
