@@ -11,6 +11,8 @@ import com.shkurta.clock.R
 
 class AlarmReceiver : BroadcastReceiver() {
 
+    private lateinit var contentTitle: String
+
     override fun onReceive(context: Context, intent: Intent) {
         val alarmId = intent.getIntExtra("ALARM_ID", 0)
         val alarmLabel = intent.getStringExtra("ALARM_LABEL") ?: "Alarm"

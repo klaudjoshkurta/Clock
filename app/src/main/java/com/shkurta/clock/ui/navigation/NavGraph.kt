@@ -7,9 +7,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.shkurta.clock.AlarmList
 import com.shkurta.clock.data.Alarm
 import com.shkurta.clock.ui.addalarm.AddAlarmScreen
+import com.shkurta.clock.ui.alarmlist.AlarmListScreen
 import com.shkurta.clock.viewmodel.AlarmViewModel
 
 @Composable
@@ -20,7 +20,7 @@ fun NavGraph() {
     NavHost(navController = navController, startDestination = "alarmList") {
         composable("alarmList") {
             val alarms by viewModel.alarms.collectAsState()
-            AlarmList(alarms = alarms, onAddAlarm = {
+            AlarmListScreen(alarms = alarms, onAddAlarm = {
                 navController.navigate("addAlarm")
             })
         }
