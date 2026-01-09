@@ -9,6 +9,7 @@ import javax.inject.Inject
 interface AlarmRepository {
     fun getAlarms(): Flow<List<Alarm>>
     suspend fun addAlarm(alarm: Alarm)
+    suspend fun updateAlarm(alarm: Alarm)
 }
 
 class AlarmRepositoryImpl @Inject constructor(
@@ -22,4 +23,9 @@ class AlarmRepositoryImpl @Inject constructor(
         alarmDao.insert(alarm)
         alarmScheduler.schedule(alarm)
     }
+    override suspend fun updateAlarm(alarm: Alarm) {
+        alarmDao.update(alarm)
+        alarmScheduler.schedule(alarm)
+    }
+
 }

@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -40,7 +41,11 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Alarms") }
+                title = { Text("Alarms") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background,
+                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                )
             )
         },
         floatingActionButton = {
@@ -59,7 +64,10 @@ fun HomeScreen(
             contentPadding = innerPadding
         ) {
             items(alarms) { alarm ->
-                AlarmItem(alarm = alarm)
+                AlarmItem(
+                    alarm = alarm,
+                    onToggleAlarm = { viewModel.toggleAlarm(it) }
+                )
                 if (alarms.indexOf(alarm) < alarms.size - 1) {
                     HorizontalDivider(color = MaterialTheme.colorScheme.outline.copy(alpha = 0.12f))
                 }
@@ -69,7 +77,11 @@ fun HomeScreen(
 }
 
 @Composable
-fun AlarmItem(alarm: Alarm, modifier: Modifier = Modifier) {
+fun AlarmItem(
+    modifier: Modifier = Modifier,
+    alarm: Alarm,
+    onToggleAlarm: (Alarm) -> Unit = {}
+) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -90,7 +102,7 @@ fun AlarmItem(alarm: Alarm, modifier: Modifier = Modifier) {
         }
         Switch(
             checked = alarm.isEnabled,
-            onCheckedChange = { /* TODO */ }
+            onCheckedChange = { onToggleAlarm(alarm) }
         )
     }
 }

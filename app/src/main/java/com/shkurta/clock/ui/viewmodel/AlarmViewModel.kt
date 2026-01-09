@@ -23,4 +23,10 @@ class AlarmViewModel @Inject constructor(
             alarmRepository.addAlarm(alarm)
         }
     }
+
+    fun toggleAlarm(alarm: Alarm) {
+        viewModelScope.launch {
+            alarmRepository.updateAlarm(alarm.copy(isEnabled = !alarm.isEnabled))
+        }
+    }
 }
