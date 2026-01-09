@@ -1,4 +1,4 @@
-package com.shkurta.clock.ui.addalarm
+package com.shkurta.clock.ui.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +13,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TimePicker
+import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,16 +22,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
-import androidx.compose.material3.rememberTimePickerState
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.shkurta.clock.data.Alarm
+import com.shkurta.clock.ui.viewmodel.AlarmViewModel
 import java.util.Calendar
 
-@OptIn(ExperimentalMaterial3AdaptiveApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddAlarmScreen(
-    onSave: (Calendar, String) -> Unit,
-    onCancel: () -> Unit
+fun NewAlarmScreen(
+    navController: NavHostController,
 ) {
+    val viewModel: AlarmViewModel = hiltViewModel()
     val timePickerState = rememberTimePickerState(is24Hour = true)
     var label by remember { mutableStateOf("") }
 
@@ -52,7 +55,7 @@ fun AddAlarmScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
         Row {
-            Button(onClick = onCancel) {
+            Button(onClick = { navController.popBackStack() }) {
                 Text("Cancel")
             }
             Spacer(modifier = Modifier.width(8.dp))
@@ -61,7 +64,8 @@ fun AddAlarmScreen(
                     set(Calendar.HOUR_OF_DAY, timePickerState.hour)
                     set(Calendar.MINUTE, timePickerState.minute)
                 }
-                onSave(calendar, label)
+                viewModel.addAlarm(Alarm(time = calendar, label = label))
+                navController.popBackStack()
             }) {
                 Text("Save")
             }

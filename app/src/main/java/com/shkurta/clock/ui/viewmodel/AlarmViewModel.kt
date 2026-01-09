@@ -1,4 +1,4 @@
-package com.shkurta.clock.viewmodel
+package com.shkurta.clock.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
