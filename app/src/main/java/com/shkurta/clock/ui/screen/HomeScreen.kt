@@ -21,6 +21,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -173,14 +174,18 @@ fun AlarmItem(
                         onRepeatDaysChange(alarm, newRepeatDays)
                     }
                 )
-                Box(
-                    modifier = Modifier.fillMaxWidth()
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    color = MaterialTheme.colorScheme.surface,
+                    shape = MaterialTheme.shapes.medium
                 ) {
                     Column(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 12.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -193,8 +198,14 @@ fun AlarmItem(
                                 style = MaterialTheme.typography.bodyLarge
                             )
                         }
+                        HorizontalDivider(
+                            color = MaterialTheme.colorScheme.surfaceContainerLow,
+                            thickness = 3.dp
+                        )
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 2.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -209,6 +220,7 @@ fun AlarmItem(
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(16.dp))
                 TextButton(
                     onClick = { showAlarmDetails = false }
                 ) {
