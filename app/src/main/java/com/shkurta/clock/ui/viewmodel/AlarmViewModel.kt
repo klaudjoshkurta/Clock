@@ -29,4 +29,10 @@ class AlarmViewModel @Inject constructor(
             alarmRepository.updateAlarm(alarm.copy(isEnabled = !alarm.isEnabled))
         }
     }
+
+    fun updateRepeatDays(alarm: Alarm, repeatDays: Set<Int>) {
+        viewModelScope.launch {
+            alarmRepository.updateAlarm(alarm.copy(repeatDays = repeatDays))
+        }
+    }
 }
