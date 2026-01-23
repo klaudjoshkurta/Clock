@@ -1,6 +1,6 @@
 ### Clock
 
-A lightweight, reliable alarm clock for Android with recurring alarms, snooze, tones, and a clean UI.
+A lightweight, reliable alarm clock for Android with recurring alarms, snooze, tones, and a clean UI
 
 ### Features
 - Create, edit, enable/disable multiple alarms
