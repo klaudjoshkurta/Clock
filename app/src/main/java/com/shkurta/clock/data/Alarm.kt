@@ -11,5 +11,4 @@ data class Alarm(
     val time: Calendar,
     val label: String,
     val isEnabled: Boolean = true,
-    val repeatDays: Set<Int> = emptySet()
 )
