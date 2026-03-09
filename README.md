@@ -16,4 +16,3 @@ A lightweight, reliable alarm clock for Android with recurring alarms, snooze, t
 - Room (local storage)
 - WorkManager + AlarmManager (scheduling)
 - Hilt (DI)
-- Kotlin Coroutines + Flow (state)
